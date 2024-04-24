@@ -70,7 +70,7 @@ def histogram(img):
     plt.plot(hist_full)
     plt.show()
 
-# Funciones matemáticas de numpy
+# ---------------- Funciones matemáticas de numpy ----------------
 
 def my_sum(*args):
     s =  np.array(args)
