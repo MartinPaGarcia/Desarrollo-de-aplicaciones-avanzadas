@@ -73,39 +73,37 @@ def add_node(attr):
     
 
 #---------- Dictionary of reserved words --------------
-symbol_table["pi"] = 3.14159265359 # Predefined values
-symbol_table["e"] = 2.71828182846 # Predefined values
-symbol_table["phi"] = 1.61803398875 # Predefined values
-symbol_table["tau"] = 6.28318530718 # Predefined values
-symbol_table["gamma"] = 0.5772156649 # Predefined values
-symbol_table["inf"] = float('inf') # Predefined values
-symbol_table["nan"] = float('nan') # Predefined values
-symbol_table["true"] = 1 # Predefined values
-symbol_table["false"] = 0 # Predefined values
-symbol_table["print"] = print # Predefined values
-symbol_table["printP"] = printP # Predefined values
-symbol_table["printP2"] = printP2 # Predefined values
-symbol_table["exit"] = "exit" # Predefined values
-symbol_table["symbols"] = "symbols" # Predefined values
-symbol_table["max"] = max              # Predefined values
-
-
-symbol_table["load_image"] = load_image # Predefined values
-symbol_table["save_image"] = save_image # Predefined values
-symbol_table["show_image"] = show_image # Predefined values
-symbol_table["gen_matrix"] = gen_matrix # Predefined values
-symbol_table["gen_vector"] = gen_vector # Predefined values
-symbol_table["multiplot_show"] = multiplot_show # Predefined values
-symbol_table["my_mean"] = my_mean # Predefined values
-symbol_table["my_sum"] = my_sum # Predefined values
-symbol_table["my_median"] = my_median # Predefined values
-symbol_table["my_std"] = my_std # Predefined values
-symbol_table["my_max"] = my_max # Predefined values
-symbol_table["my_min"] = my_min # Predefined values
-symbol_table["my_sin"] = my_sin # Predefined values
-symbol_table["my_cos"] = my_cos # Predefined values
-symbol_table["my_tan"] = my_tan # Predefined values
-symbol_table["histogram"] = histogram # Predefined values
+symbol_table["pi"] = 3.14159265359                  # Predefined values
+symbol_table["e"] = 2.71828182846                   # Predefined values
+symbol_table["phi"] = 1.61803398875                 # Predefined values
+symbol_table["tau"] = 6.28318530718                 # Predefined values
+symbol_table["gamma"] = 0.5772156649                # Predefined values
+symbol_table["inf"] = float('inf')                   # Predefined values
+symbol_table["nan"] = float('nan')                   # Predefined values
+symbol_table["true"] = 1                            # Predefined values
+symbol_table["false"] = 0                           # Predefined values
+symbol_table["print"] = print                       # Predefined values
+symbol_table["printP"] = printP                     # Predefined values
+symbol_table["printP2"] = printP2                   # Predefined values
+symbol_table["exit"] = "exit"                       # Predefined values
+symbol_table["symbols"] = "symbols"                 # Predefined values
+symbol_table["max"] = max                           # Predefined values
+symbol_table["load_image"] = load_image             # Predefined values
+symbol_table["save_image"] = save_image             # Predefined values
+symbol_table["show_image"] = show_image             # Predefined values
+symbol_table["gen_matrix"] = gen_matrix             # Predefined values
+symbol_table["gen_vector"] = gen_vector             # Predefined values
+symbol_table["multiplot_show"] = multiplot_show     # Predefined values
+symbol_table["my_mean"] = my_mean                   # Predefined values
+symbol_table["my_sum"] = my_sum                     # Predefined values
+symbol_table["my_median"] = my_median               # Predefined values
+symbol_table["my_std"] = my_std                     # Predefined values
+symbol_table["my_max"] = my_max                     # Predefined values
+symbol_table["my_min"] = my_min                     # Predefined values
+symbol_table["my_sin"] = my_sin                     # Predefined values
+symbol_table["my_cos"] = my_cos                     # Predefined values
+symbol_table["my_tan"] = my_tan                     # Predefined values
+symbol_table["histogram"] = histogram               # Predefined values
 
 #---------- Ignored characters ------------------------
 
