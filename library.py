@@ -1,6 +1,7 @@
 import numpy as np
-import matplotlib as plt
+import matplotlib
 import cv2
+import matplotlib.pyplot as plt
 
 def load_image(path):
     path = path.strip()
@@ -55,3 +56,54 @@ def multiplot_show(nrows, ncols, *args):
     
     plt.show()
     plt.close()
+
+
+def histogram(img):
+    '''
+        NOTA IMPORTANTE: PARA ESTA PORCIÓN DE CÓDIGO NOS BASAMOS EN LA DOCUMENTACIÓN OFICIAL DE OPEN CV
+        ESPECÍFICAMENTE EN EL SIGUIENTE ENLACE: https://docs.opencv.org/4.x/d1/db7/tutorial_py_histogram_begins.html
+        Y LO ADAPTAMOS A NUESTRO CÓDIGO PARA AUTOMATIZAR EL PROCESO DE OBTENCIÓN DE HISTOGRAMAS DE IMÁGENES
+    '''
+    load_image(img)
+    img = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
+    hist_full = cv2.calcHist([img], [0], None, [256], [0, 256])
+    plt.plot(hist_full)
+    plt.show()
+
+# Funciones matemáticas de numpy
+
+def my_sum(*args):
+    s =  np.array(args)
+    return np.sum(s)
+
+def my_mean(*args):
+    s =  np.array(args)
+    return np.mean(s)
+
+def my_median(*args):
+    s =  np.array(args)
+    return np.median(s)
+
+def my_std(*args):
+    s =  np.array(args)
+    return np.std(s)
+
+def my_max(*args):
+    s =  np.array(args)
+    return np.max(s)
+
+def my_min(*args):
+    s =  np.array(args)
+    return np.min(s)
+
+def my_sin(*args):
+    s =  np.array(args)
+    return np.sin(s)
+
+def my_cos(*args):
+    s =  np.array(args)
+    return np.cos(s)
+
+def my_tan(*args):
+    s =  np.array(args)
+    return np.tan(s)

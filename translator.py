@@ -1,9 +1,11 @@
 import ply.lex as lex
 import ply.yacc as yacc
 import networkx as nx
-from networkx.drawing.nx_pydot import graphviz_layout
 import matplotlib.pyplot as plt
 from library import *
+
+with open("test.txt", "r") as f:
+    lines = f.readlines()
 
 # ---------- Graph variables --------------------------
 parseGraph = None
@@ -71,31 +73,39 @@ def add_node(attr):
     
 
 #---------- Dictionary of reserved words --------------
-symbol_table["pi"] = 3.14159265359              # Predefined values
-symbol_table["e"] = 2.71828182846               # Predefined values
-symbol_table["phi"] = 1.61803398875             # Predefined values
-symbol_table["tau"] = 6.28318530718             # Predefined values
-symbol_table["gamma"] = 0.5772156649            # Predefined values
-symbol_table["inf"] = float('inf')               # Predefined values
-symbol_table["nan"] = float('nan')               # Predefined values
-symbol_table["true"] = 1                        # Predefined values
-symbol_table["false"] = 0                       # Predefined values
-symbol_table["print"] = print                   # Predefined values
-symbol_table["printP"] = printP                 # Predefined values
-symbol_table["printP2"] = printP2               # Predefined values
-symbol_table["exit"] = "exit"                   # Predefined values
-symbol_table["symbols"] = "symbols"             # Predefined values
-symbol_table["max"] = max                       # Predefined values
+symbol_table["pi"] = 3.14159265359 # Predefined values
+symbol_table["e"] = 2.71828182846 # Predefined values
+symbol_table["phi"] = 1.61803398875 # Predefined values
+symbol_table["tau"] = 6.28318530718 # Predefined values
+symbol_table["gamma"] = 0.5772156649 # Predefined values
+symbol_table["inf"] = float('inf') # Predefined values
+symbol_table["nan"] = float('nan') # Predefined values
+symbol_table["true"] = 1 # Predefined values
+symbol_table["false"] = 0 # Predefined values
+symbol_table["print"] = print # Predefined values
+symbol_table["printP"] = printP # Predefined values
+symbol_table["printP2"] = printP2 # Predefined values
+symbol_table["exit"] = "exit" # Predefined values
+symbol_table["symbols"] = "symbols" # Predefined values
+symbol_table["max"] = max              # Predefined values
 
 
-symbol_table["load_image"] = load_image         # Predefined values
-symbol_table["save_image"] = save_image         # Predefined values
-symbol_table["show_image"] = show_image         # Predefined values
-symbol_table["gen_matrix"] = gen_matrix         # Predefined values
-symbol_table["gen_vector"] = gen_vector         # Predefined values
+symbol_table["load_image"] = load_image # Predefined values
+symbol_table["save_image"] = save_image # Predefined values
+symbol_table["show_image"] = show_image # Predefined values
+symbol_table["gen_matrix"] = gen_matrix # Predefined values
+symbol_table["gen_vector"] = gen_vector # Predefined values
 symbol_table["multiplot_show"] = multiplot_show # Predefined values
-
-
+symbol_table["my_mean"] = my_mean # Predefined values
+symbol_table["my_sum"] = my_sum # Predefined values
+symbol_table["my_median"] = my_median # Predefined values
+symbol_table["my_std"] = my_std # Predefined values
+symbol_table["my_max"] = my_max # Predefined values
+symbol_table["my_min"] = my_min # Predefined values
+symbol_table["my_sin"] = my_sin # Predefined values
+symbol_table["my_cos"] = my_cos # Predefined values
+symbol_table["my_tan"] = my_tan # Predefined values
+symbol_table["histogram"] = histogram # Predefined values
 
 #---------- Ignored characters ------------------------
 
@@ -362,7 +372,7 @@ def p_params(p):
         p[0] = [p[1]]
 
 #---------- parse tree ---------------------------------
-def exexute_parse_tree(tree):
+def execute_parse_tree(tree):
     root = tree.nodes[0]
     root_id = 0
     res = visit_node(tree, root_id, -1)
@@ -425,6 +435,7 @@ def visit_node(tree, node_id, from_id):
     
     if current_node["type"] == "FUNCTION_CALL" or current_node["type"] == "FLOW_FUNCTION_CALL":
         v = current_node["value"]
+        print("**** HERE Function call: ", v, " ****")
         if v in symbol_table:
             fn = symbol_table[v]
             if callable(fn):
@@ -460,7 +471,24 @@ def p_error(p):
 
 
 #---------- Building the parser ------------------------
+
 parser = yacc.yacc()
+
+#---------- Executing TXT file lines -------------------
+
+for line in lines:
+    NODE_COUNTER = 0
+    parseGraph = nx.Graph()
+    root = add_node({"type":"ROOT", "label":"ROOT"})
+    result = parser.parse(line)
+    parseGraph.add_edge(root["counter"], result["counter"])
+    labels = nx.get_node_attributes(parseGraph, 'label')
+    if (draw):
+        nx.draw(parseGraph,labels=labels, with_labels=True, font_weight='bold')
+        plt.show()
+
+    execute_parse_tree(parseGraph)
+
 #---------- Testing the lexer -------------------------
 
 while True:
@@ -484,12 +512,19 @@ while True:
     parseGraph.add_edge(root["counter"], result["counter"])
     labels = nx.get_node_attributes(parseGraph, 'label')
     if (draw):
-        
-        #pos = graphviz_layout(parseGraph, prog="dot") commented out because it doesn't work on MacOs
-        nx.draw(parseGraph,labels=labels, with_labels=True, font_weight='bold') # add pos on arguments
+        nx.draw(parseGraph,labels=labels, with_labels=True, font_weight='bold')
         plt.show()
 
-    exexute_parse_tree(parseGraph)
+    execute_parse_tree(parseGraph)
 
 
 print("Finished, accepted input.")
+
+
+# Aceptar archivos y ejecutar el contenido -> 15 pts -> LISTO
+# Tareas -> 15 pts -> LISTO
+# Aceptar cualquier función de numpy Al menos 9 de ellas. -> 10 pts -> LISTO
+# Implementación de visualización de histogramas con opencv -> 10 pts -> LISTO
+# Implementación de un algoritmo como WaterShed-> 25 pts -> 
+# Pruebas -> 25 pts -> 
+# Aceptar None como valor de la gramática para inicialización de variables -> 5 pts -> 
