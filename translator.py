@@ -468,7 +468,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-#-------------------------- Reading the file --------------------------
+#-------------------------- Reading the file ----------------------------
 
 #-------- IMPORTANT NOTICE: TO TEST A FILE IMPORT SET THE VARIABLE fileImport TO TRUE--------
 
