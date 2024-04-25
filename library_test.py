@@ -1,5 +1,5 @@
 from library import *
-import numpy as np
+import numpy as np 
 
 def test_my_sum():
     assert my_sum(1, 2, 3) == 6
