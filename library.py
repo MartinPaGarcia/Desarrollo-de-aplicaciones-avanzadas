@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib
 import cv2
 import matplotlib.pyplot as plt
 
@@ -21,7 +20,6 @@ def search_cv2(function_name):
         return getattr(cv2, function_name)
     except Exception as e:
         return "AttributeError: module 'cv2' has no attribute", e
-    return None
 
 def gen_matrix(a, b, *args):
     s = np.array(args)
@@ -31,46 +29,37 @@ def gen_vector(*args):
     s =  np.array(args)
     return s
 
-def multiplot_show(nrows, ncols, *args):
-    
-    if( type(nrows) is float):
-        nrows = int(nrows)
-    if( type(ncols) is float):
-        ncols = int(ncols)
-        
-    
-    args_i = 0
-    for i in range(1,nrows+1):
-        for j in range(1,ncols+1):
-            if(args_i < len(args)):
-                # print(f"going for r:{i} c:{j} idx:{args_i+1}")
-                plt.subplot(nrows,ncols,args_i+1)
-                red = args[args_i][:,:,2].copy()
-                args[args_i][:,:,2] = args[args_i][:,:,0] 
-                args[args_i][:,:,0] = red
-                
-                plt.imshow(args[args_i] )
-                plt.title(f'img_{args_i}')
-                args_i += 1
-    
-    
-    plt.show()
-    plt.close()
-
+def gray_scale(img):
+    img = load_image(img)
+    gs = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gs
 
 def histogram(img):
     '''
-        NOTA IMPORTANTE: PARA ESTA PORCIÓN DE CÓDIGO NOS BASAMOS EN LA DOCUMENTACIÓN OFICIAL DE OPEN CV
-        ESPECÍFICAMENTE EN EL SIGUIENTE ENLACE: https://docs.opencv.org/4.x/d1/db7/tutorial_py_histogram_begins.html
-        Y LO ADAPTAMOS A NUESTRO CÓDIGO PARA AUTOMATIZAR EL PROCESO DE OBTENCIÓN DE HISTOGRAMAS DE IMÁGENES
+        IMPORTANT NOTICE: FOR THIS CODE SNIPPET WE BASED OURSELVES ON THE OFFICIAL OPEN CV DOCUMENTATION
+        SPECIFICALLY IN THE FOLLOWING LINK: https://docs.opencv.org/4.x/d1/db7/tutorial_py_histogram_begins.html
+        AND WE ADAPTED IT TO OUR CODE TO AUTOMATE THE PROCESS OF OBTAINING HISTOGRAMS OF IMAGES
     '''
-    load_image(img)
-    img = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
+    img = gray_scale(img)
     hist_full = cv2.calcHist([img], [0], None, [256], [0, 256])
     plt.plot(hist_full)
     plt.show()
 
-# ---------------- Funciones matemáticas de numpy ----------------
+def canny_edge(img):
+    '''
+        IMPORTANT NOTICE: FOR THIS CODE SNIPPET WE BASED OURSELVES ON THE OFFICIAL OPEN CV DOCUMENTATION
+        SPECIFICALLY IN THE FOLLOWING LINK: https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
+        AND WE ADAPTED IT TO OUR CODE TO AUTOMATE THE PROCESS OF EDGE DETECTION
+    '''
+    img = gray_scale(img)
+    edges = cv2.Canny(img,200,400)
+    
+    plt.subplot(121),plt.imshow(img,cmap = 'gray')
+    plt.title('Original Image'), plt.xticks([]), plt.yticks([])
+    plt.subplot(122),plt.imshow(edges,cmap = 'gray')
+    plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
+    
+    plt.show()
 
 def my_sum(*args):
     s =  np.array(args)
