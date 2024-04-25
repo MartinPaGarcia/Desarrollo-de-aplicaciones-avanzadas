@@ -2,3 +2,16 @@ a = 1 + 1
 b = a + 3
 c = a + b
 c
+my_sum(a,b,c)
+my_mean(a,b,c)
+my_max(a,b,c)
+my_min(a,b,c)
+my_median(a,b,c)
+my_std(a,b,c)
+my_sin(a)
+my_cos(a)
+my_tan(a)
+load_image('test.jpg')
+canny_edge('test.jpg')
+histogram("test.jpg")
+shot_image('test.jpg')
