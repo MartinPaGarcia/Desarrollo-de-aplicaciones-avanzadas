@@ -1,3 +1,66 @@
+<div id="top"></div>
+
+
+
+
+<br />
+<div align="center">
+  <a href="https://image.isu.pub/170818010004-890bd89904ad3bd71b4e466939f1030f/jpg/page_1_thumb_large.jpg">
+    <img src="logo.jpg" alt="Logo" width="350" height="350">
+  </a>
+
+  <h3 align="center">Desarrollo de aplicaciones avanzadas</h3>
+
+  <p align="center">
+    TC3002B.201
+    
+  </p>
+</div>
+<br> <br> 
+
+
+
+# Elaborado por:
+
+- [Martín Palomares García](https://github.com/MartinPaGarcia)
+- [Marco Antonio Torres](https://github.com/marcotorresx)
+- [Salomon Dabbah Beracha](https://github.com/SalomonDabs?tab=overview&from=2024-04-01&to=2024-04-29)
+
+
+# Tabla de contenidos
+<details>
+  <summary>Tabla de contenido</summary>
+  <ol>
+    <li><a href="#propósito-del-proyecto">Acerca del proyecto</a></li>
+    <li><a href="#descripción-de-los-componentes-clave">Descripción de los componentes clave</a></li>
+    <li><a href="#cómo-instalar-el-repositorio">Instalación</a></li>
+    <li><a href="#gramática">Gramática</a></li>
+      <ul>
+        <li><a href="#tabla-de-gramática">Tabla de gramática</a></li>
+        <li><a href="#los-terminales">Símbolos terminales</a></li>
+      </ul>
+    </li>
+    <li><a href="#cómo-usar-el-código"> Cómo usar el código</a></li>
+      <ul>
+        <li><a href="#nuestro-lenguaje-y-cómo-usarlo">Nuestro lenguaje y cómo usarlo</a></li>
+        <li><a href="#operaciones-aritméticas">Operaciones aritméticas</a></li>
+        <li><a href="#asignación-de-variables"> Asignación de variables</a></li>
+          <ul>
+            <li><a href="#operaciones-matemáticas-con-variables">Operaciones matemáticas con variables</a></li>
+            <li><a href="#funciones-numpy">Funciones NumPy</a></li>
+            <li><a href="#ejemplo-de-uso-de-nuestra-librería">Ejmeplos de uso</a></li>
+              <ul>
+                <li><a href="#tabla-de-funciones-numpy">Tabla de funciones NumPy</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</details>
+
+
 # Propósito del proyecto
 
 Este código proporciona un lenguaje simple para procesar datos, manejar tareas básicas de visualización de imágenes y realizar cálculos matemáticos.
@@ -42,6 +105,70 @@ pip install matplotlib
 pip install networkx
 pip install py-yacc
 pip install lex2
+```
+
+
+
+# Gramática
+
+Nuestra gramática está declarada en el documento [parser.out](/parser.out).
+
+Esta [gramática](#gramática) describe un lenguaje de programación simple que incluye términos como variables, cadenas de texto, números y operadores aritméticos y de asignación, así como funciones y llamadas a funciones con parámetros. Los [terminales](#los-terminales) incluyen elementos como paréntesis, comas y conectores específicos, junto con operadores como suma, resta, multiplicación y división, y símbolos de asignación.
+
+
+## Tabla de Gramática
+```shell
+Grammar
+
+Rule 0     S' -> assignment
+Rule 1     assignment -> VARIABLE SETTO expression
+Rule 2     assignment -> VARIABLE SETTO flow
+Rule 3     flow -> VARIABLE CONNECT flow_functions
+Rule 4     flow_functions -> flow_function_call CONNECT flow_functions
+Rule 5     flow_functions -> flow_function_call
+Rule 6     flow_function_call -> VARIABLE LPAREN params RPAREN
+Rule 7     assignment -> expression
+Rule 8     expression -> expression PLUS term
+Rule 9     expression -> expression MINUS term
+Rule 10    expression -> term
+Rule 11    expression -> string
+Rule 12    string -> STRING
+Rule 13    term -> term TIMES exponent
+Rule 14    term -> term DIVIDE exponent
+Rule 15    term -> exponent
+Rule 16    exponent -> factor EXP factor
+Rule 17    exponent -> factor
+Rule 18    exponent -> LPAREN expression RPAREN
+Rule 19    factor -> NUMBER
+Rule 20    factor -> VARIABLE
+Rule 21    factor -> function_call
+Rule 22    function_call -> VARIABLE LPAREN RPAREN
+Rule 23    function_call -> VARIABLE LPAREN params RPAREN
+Rule 24    params -> params COMMA expression
+Rule 25    params -> expression
+```
+
+## Los terminales
+
+Terminals, with rules where they appear
+
+```shell
+Terminals, with rules where they appear
+
+COMMA                : 24
+CONNECT              : 3 4
+DIVIDE               : 14
+EXP                  : 16
+LPAREN               : 6 18 22 23
+MINUS                : 9
+NUMBER               : 19
+PLUS                 : 8
+RPAREN               : 6 18 22 23
+SETTO                : 1 2
+STRING               : 12
+TIMES                : 13
+VARIABLE             : 1 2 3 6 20 22 23
+error                : 
 ```
 
 # Cómo usar el código:
@@ -96,7 +223,7 @@ input>> b = 2
 input>> a + b
 ```
 
-### Funciones (NumPy)
+### Tabla de Funciones (NumPy)
 
 | Función             | Uso             |
 | ------------------- | --------------- |
@@ -123,3 +250,6 @@ input>> c = 45
 input>> my_mean(a,b,c)
 3.333333333333332
 ```
+
+# Tests
+
