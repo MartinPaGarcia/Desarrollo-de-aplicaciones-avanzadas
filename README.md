@@ -55,7 +55,7 @@ Aquí se encuentra el documento que abarca todos los rubros especificados en CAN
       </ul>
     </li>
     <ul>
-        <li><a href="#tests">Tests</a></li>
+        <li><a href="#pruebas">Tests</a></li>
       </ul>
   </ol>
 </details>
@@ -269,7 +269,7 @@ input>> my_mean(a,b,c)
 3.333333333333332
 ```
 
-# Tests
+# Pruebas
 En esta sección se mostrarán los casos de prueba para nuestro compilador/traductor y cómo habilitarlos dentro de nuestro código:
 
 Cuando usted abre nuestro código en su editor de texto de preferencia, notará lo siguiente:
