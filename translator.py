@@ -527,12 +527,3 @@ while True:
 
 
 print("Finished, accepted input.")
-
-
-# Aceptar archivos y ejecutar el contenido -> 15 pts -> LISTO
-# Tareas -> 15 pts -> LISTO
-# Aceptar cualquier función de numpy Al menos 9 de ellas. -> 10 pts -> LISTO
-# Implementación de visualización de histogramas con opencv -> 10 pts -> LISTO
-# Implementación de CannyEdge-> 25 pts -> LISTO
-# Pruebas -> 25 pts -> 
-# Aceptar None como valor de la gramática para inicialización de variables -> 5 pts -> 
