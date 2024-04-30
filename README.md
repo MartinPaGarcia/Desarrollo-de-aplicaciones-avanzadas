@@ -1,8 +1,5 @@
 <div id="top"></div>
 
-
-
-
 <br />
 <div align="center">
   <a href="https://image.isu.pub/170818010004-890bd89904ad3bd71b4e466939f1030f/jpg/page_1_thumb_large.jpg">
@@ -16,9 +13,7 @@
     
   </p>
 </div>
-<br> <br> 
-
-
+<br> <br>
 
 # Elaborado por:
 
@@ -26,8 +21,8 @@
 - [Marco Antonio Torres](https://github.com/marcotorresx)
 - [Salomon Dabbah Beracha](https://github.com/SalomonDabs?tab=overview&from=2024-04-01&to=2024-04-29)
 
-
 # Tabla de contenidos
+
 <details>
   <summary>Tabla de contenido</summary>
   <ol>
@@ -59,7 +54,6 @@
     </li>
   </ol>
 </details>
-
 
 # Propósito del proyecto
 
@@ -107,16 +101,14 @@ pip install py-yacc
 pip install lex2
 ```
 
-
-
 # Gramática
 
 Nuestra gramática está declarada en el documento [parser.out](/parser.out).
 
 Esta [gramática](#gramática) describe un lenguaje de programación simple que incluye términos como variables, cadenas de texto, números y operadores aritméticos y de asignación, así como funciones y llamadas a funciones con parámetros. Los [terminales](#los-terminales) incluyen elementos como paréntesis, comas y conectores específicos, junto con operadores como suma, resta, multiplicación y división, y símbolos de asignación.
 
-
 ## Tabla de Gramática
+
 ```shell
 Grammar
 
@@ -168,7 +160,7 @@ SETTO                : 1 2
 STRING               : 12
 TIMES                : 13
 VARIABLE             : 1 2 3 6 20 22 23
-error                : 
+error                :
 ```
 
 # Cómo usar el código:
@@ -237,7 +229,28 @@ input>> a + b
 | Coseno              | my_cos(args)    |
 | Tangente            | my_tan(args)    |
 
+### Descripción de las funciones de Library
 
+| Función    | Parámetro/s                 | Descripción                                                                                                                                                                                                                                                                                          |
+| ---------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| load_image | imagen                      | Carga una imagen al compilador y la lee.                                                                                                                                                                                                                                                             |
+| save_image | nombre_del_archivo, imagen  | Guarda la imagen en el dispositivo con el nombre seleccionado.                                                                                                                                                                                                                                       |
+| show_image | imagen                      | Despliega la imagen en el dispositivo.                                                                                                                                                                                                                                                               |
+| search_cv2 | nombre_de_la_funcion        | Se usa para ver si una función existe en la librería de cv2, en caso de que exista, la función la regresa, de lo contrario arroja un error diciendo que no existe.                                                                                                                                   |
+| gen_matrix | filas, columnas, argumentos | Crea una matriz de x filas, por y columnas, y se le introducen los argumentos, es importante tener en cuenta que se tienen que introducir la cantidad de argumentos resultante de la multiplicación de x por y, por ejemplo, si la matriz sería de 3 x 3 tendría que tener 9 argumentos exactamente. |
+| gen_vector | argumentos                  | Crea un vector que contiene los argumentos que se le proporcionen.                                                                                                                                                                                                                                   |
+| my_mean    | argumentos                  | Obtiene la media de los argumentos proporcionados.                                                                                                                                                                                                                                                   |
+| my_sum     | argumentos                  | Obtiene la sumatoria de los argumentos proporcionados.                                                                                                                                                                                                                                               |
+| my_median  | argumentos                  | Obtiene la mediana de los argumentos proporcionados.                                                                                                                                                                                                                                                 |
+| my_std     | argumentos                  | Obtiene la desviación estándar de los argumentos proporcionados.                                                                                                                                                                                                                                     |
+| my_max     | argumentos                  | Obtiene el elemento más grande de los argumentos proporcionados.                                                                                                                                                                                                                                     |
+| my_min     | argumentos                  | Obtiene el elemento más pequeño de los argumentos proporcionados.                                                                                                                                                                                                                                    |
+| my_sin     | argumentos                  | Obtiene los senos de los argumentos proporcionados.                                                                                                                                                                                                                                                  |
+| my_cos     | argumentos                  | Obtiene los cosenos de los argumentos proporcionados.                                                                                                                                                                                                                                                |
+| my_tan     | argumentos                  | Obtiene las tangentes de los argumentos proporcionados.                                                                                                                                                                                                                                              |
+| histogram  | imagen                      | Convierte la imagen a escala de grises y calcula su histograma, que muestra la distribución de intensidades de píxeles de 0 (negro) a 255 (blanco).                                                                                                                                                  |
+| canny_edge | imagen                      | Convierte la imagen a escala de grises y detecta los bordes utilizando el método de Canny. Luego, muestra la imagen original y la imagen de los bordes.                                                                                                                                              |
+| gray_scale | imagen                      | Carga la imagen y la convierte en blanco y negro.                                                                                                                                                                                                                                                    |
 
 ### Ejemplo de uso de nuestra librería
 
@@ -252,4 +265,3 @@ input>> my_mean(a,b,c)
 ```
 
 # Tests
-
