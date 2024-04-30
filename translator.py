@@ -90,6 +90,7 @@ symbol_table["max"] = max              # Predefined values
 symbol_table["load_image"] = load_image # Predefined values
 symbol_table["save_image"] = save_image # Predefined values
 symbol_table["show_image"] = show_image # Predefined values
+symbol_table["search_cv2"] = search_cv2 # Predefined values
 symbol_table["gen_matrix"] = gen_matrix # Predefined values
 symbol_table["gen_vector"] = gen_vector # Predefined values
 symbol_table["my_mean"] = my_mean # Predefined values
@@ -104,6 +105,8 @@ symbol_table["my_tan"] = my_tan # Predefined values
 symbol_table["histogram"] = histogram # Predefined values
 symbol_table["canny_edge"] = canny_edge # Predefined values
 symbol_table["gray_scale"] = gray_scale # Predefined values
+
+
 
 #---------- Ignored characters ------------------------
 
@@ -524,3 +527,12 @@ while True:
 
 
 print("Finished, accepted input.")
+
+
+# Aceptar archivos y ejecutar el contenido -> 15 pts -> LISTO
+# Tareas -> 15 pts -> LISTO
+# Aceptar cualquier función de numpy Al menos 9 de ellas. -> 10 pts -> LISTO
+# Implementación de visualización de histogramas con opencv -> 10 pts -> LISTO
+# Implementación de CannyEdge-> 25 pts -> LISTO
+# Pruebas -> 25 pts -> 
+# Aceptar None como valor de la gramática para inicialización de variables -> 5 pts -> 
