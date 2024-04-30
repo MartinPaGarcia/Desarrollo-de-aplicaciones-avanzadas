@@ -44,14 +44,15 @@
             <li><a href="#operaciones-matemáticas-con-variables">Operaciones matemáticas con variables</a></li>
             <li><a href="#funciones-numpy">Funciones NumPy</a></li>
             <li><a href="#ejemplo-de-uso-de-nuestra-librería">Ejmeplos de uso</a></li>
-              <ul>
-                <li><a href="#tabla-de-funciones-numpy">Tabla de funciones NumPy</a></li>
-              </ul>
+                <li><a href="#tabla-de-funciones-numpy">Tabla de funciones NumPy</a></li>          
             </li>
           </ul>
         </li>
       </ul>
     </li>
+    <ul>
+        <li><a href="#tests">Tests</a></li>
+      </ul>
   </ol>
 </details>
 
@@ -265,3 +266,34 @@ input>> my_mean(a,b,c)
 ```
 
 # Tests
+En esta sección se mostrarán los casos de prueba para nuestro compilador/traductor:
+
+```shell
+pemdas = 5 + (3 * 2) / 7 ^ 2 - 1
+a = 1 + 1
+b = a + 3
+c = a + b
+c
+cadena = "hola"
+cadena + "hola"
+my_sum(a,b,c)
+my_mean(a,b,c)
+my_max(a,b,c)
+my_min(a,b,c)
+my_median(a,b,c)
+my_std(a,b,c)
+my_sin(a)
+my_cos(a)
+my_tan(a)
+search_cv2("imread")
+gen_matrix(3,3,1,2,3,4,5,6,7,8,9)
+img = load_image("test.jpg")
+canny = canny_edge("test.jpg")
+hist = histogram("test.jpg")
+show_image(img)
+show_image(gray_scale("test.jpg"))
+save_image("test2.jpg",img)
+size = gen_vector(4,5)
+img2 = img -> blur(size)-> blur(size)-> blur(size)  
+show_image(img2)
+```
