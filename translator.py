@@ -4,21 +4,19 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from library import *
 
-# #-------------------------- Graph variables --------------------------
+# ---------- Graph variables --------------------------
 parseGraph = None
 draw = True
+fileImport = True
 NODE_COUNTER = 0
 
-#-------------------------- File import -------------------------------
-fileImport = True
-
-#-------------------------- Description -------------------------------
+#---------- Description -------------------------------
 # This program is a simple lexer that can handle
 # basic arithmetic operations and variable assignment.
 # It also has a symbol table to store the values of
 # the variables.
 
-#-------------------------- List of tokens ----------------------------
+#---------- List of tokens ----------------------------
 
 tokens =(
     'NUMBER',
@@ -38,7 +36,7 @@ tokens =(
 
 )
 
-#-------------------------- Regular expressions -----------------------
+#---------- Regular expressions -----------------------
 
 t_PLUS = r'\+'
 t_SETTO = r'='
@@ -51,17 +49,17 @@ t_RPAREN = r'\)'
 t_COMMA = r','
 t_CONNECT = r'\->'
 
-#-------------------------- Symbol table ------------------------------
+#---------- Symbol table ------------------------------
 symbol_table = dict()
 
-#-------------------------- Predefined functions ----------------------
+# ---------- Predefined functions ----------------------
 def printP():
     print("Hello, World!")
 
 def printP2(num):
     print("Hello, World! " + str(num))
 
-#-------------------------- node functions -----------------------------
+#---------- node functions -----------------------------
 def add_node(attr):
     global parseGraph
     global NODE_COUNTER
@@ -72,40 +70,46 @@ def add_node(attr):
     return parseGraph.nodes[NODE_COUNTER - 1]
     
 
-#-------------------------- Dictionary of reserved words --------------------------
-symbol_table["pi"] = 3.14159265359          # Predefined values
-symbol_table["e"] = 2.71828182846           # Predefined values
-symbol_table["phi"] = 1.61803398875         # Predefined values
-symbol_table["tau"] = 6.28318530718         # Predefined values
-symbol_table["gamma"] = 0.5772156649        # Predefined values
-symbol_table["inf"] = float('inf')           # Predefined values
-symbol_table["nan"] = float('nan')           # Predefined values
-symbol_table["true"] = 1                    # Predefined values
-symbol_table["false"] = 0                   # Predefined values
-symbol_table["print"] = print               # Predefined values
-symbol_table["printP"] = printP             # Predefined values
-symbol_table["printP2"] = printP2           # Predefined values
-symbol_table["exit"] = "exit"               # Predefined values
-symbol_table["symbols"] = "symbols"         # Predefined values
-symbol_table["max"] = max                   # Predefined values
-symbol_table["load_image"] = load_image     # Predefined values
-symbol_table["save_image"] = save_image     # Predefined values
-symbol_table["show_image"] = show_image     # Predefined values
-symbol_table["gen_matrix"] = gen_matrix     # Predefined values
-symbol_table["gen_vector"] = gen_vector     # Predefined values
-symbol_table["my_mean"] = my_mean           # Predefined values
-symbol_table["my_sum"] = my_sum             # Predefined values
-symbol_table["my_median"] = my_median       # Predefined values
-symbol_table["my_std"] = my_std             # Predefined values
-symbol_table["my_max"] = my_max             # Predefined values
-symbol_table["my_min"] = my_min             # Predefined values
-symbol_table["my_sin"] = my_sin             # Predefined values
-symbol_table["my_cos"] = my_cos             # Predefined values
-symbol_table["my_tan"] = my_tan             # Predefined values
-symbol_table["histogram"] = histogram       # Predefined values
-symbol_table["canny_edge"] = canny_edge     # Predefined values
+#---------- Dictionary of reserved words --------------
+symbol_table["pi"] = 3.14159265359 # Predefined values
+symbol_table["e"] = 2.71828182846 # Predefined values
+symbol_table["phi"] = 1.61803398875 # Predefined values
+symbol_table["tau"] = 6.28318530718 # Predefined values
+symbol_table["gamma"] = 0.5772156649 # Predefined values
+symbol_table["inf"] = float('inf') # Predefined values
+symbol_table["nan"] = float('nan') # Predefined values
+symbol_table["true"] = 1 # Predefined values
+symbol_table["false"] = 0 # Predefined values
+symbol_table["print"] = print # Predefined values
+symbol_table["printP"] = printP # Predefined values
+symbol_table["printP2"] = printP2 # Predefined values
+symbol_table["exit"] = "exit" # Predefined values
+symbol_table["symbols"] = "symbols" # Predefined values
+symbol_table["max"] = max              # Predefined values
 
-#-------------------------- Regular expressions as functions --------------------------
+symbol_table["load_image"] = load_image # Predefined values
+symbol_table["save_image"] = save_image # Predefined values
+symbol_table["show_image"] = show_image # Predefined values
+symbol_table["gen_matrix"] = gen_matrix # Predefined values
+symbol_table["gen_vector"] = gen_vector # Predefined values
+symbol_table["my_mean"] = my_mean # Predefined values
+symbol_table["my_sum"] = my_sum # Predefined values
+symbol_table["my_median"] = my_median # Predefined values
+symbol_table["my_std"] = my_std # Predefined values
+symbol_table["my_max"] = my_max # Predefined values
+symbol_table["my_min"] = my_min # Predefined values
+symbol_table["my_sin"] = my_sin # Predefined values
+symbol_table["my_cos"] = my_cos # Predefined values
+symbol_table["my_tan"] = my_tan # Predefined values
+symbol_table["histogram"] = histogram # Predefined values
+symbol_table["canny_edge"] = canny_edge # Predefined values
+symbol_table["gray_scale"] = gray_scale # Predefined values
+
+#---------- Ignored characters ------------------------
+
+
+
+#---------- Regular expressions as functions ----------
 
 def t_NUMBER(t):
     r'\d+\.?\d*'
@@ -126,7 +130,7 @@ def t_STRING(t):
     r'\".*\"'
     t.value = t.value[1:-1]
     return t
-#-------------------------- Boilerplate code --------------------------
+#---------- Boilerplate code --------------------------
 
 def t_newline(t):
     r'\n+'
@@ -138,11 +142,11 @@ def t_error(t):
     print("Error")
     t.lexer.skip(1)
 
-#-------------------------- Building the lexer -----------------------------
+#---------- Building the lexer -----------------------------
     
 lexer = lex.lex()
 
-#-------------------------- Parsing rules ----------------------------------
+#---------- Parsing rules ----------------------------------
 def p_assignment_assign(p):
     '''
     assignment : VARIABLE SETTO expression
@@ -153,7 +157,7 @@ def p_assignment_assign(p):
     parseGraph.add_edge(node["counter"], p[3]["counter"])
     p[0] = node
 
-# #-------------------------- Assignment flow -----------------------------
+# ---------- Assignment flow -----------------------------
 
 def p_assignment_flow(p):
     '''
@@ -215,7 +219,7 @@ def p_flow_function_call(p):
     
 
 
-#-------------------------- Assignment expression -------------------------
+#---------- Assignment expression -------------------------
 def p_assignment_expression(p):
     ''' 
     assignment : expression
@@ -224,7 +228,7 @@ def p_assignment_expression(p):
     p[0] = p[1]
     
 
-#-------------------------- Expression PLUS ------------------------------------
+#---------- Expression PLUS ------------------------------------
 def p_expression_plus(p):
     """
     expression : expression PLUS term
@@ -235,7 +239,7 @@ def p_expression_plus(p):
     parseGraph.add_edge(node["counter"], p[3]["counter"])
     p[0] = node
 
-#-------------------------- Expression MINUS -----------------------------------
+#---------- Expression MINUS -----------------------------------
 def p_expression_minus(p):
     """
     expression : expression MINUS term
@@ -245,7 +249,7 @@ def p_expression_minus(p):
     parseGraph.add_edge(node["counter"], p[3]["counter"])
     p[0] = node
 
-#-------------------------- Expression Term -------------------------------------
+#---------- Expression Term -------------------------------------
 def p_expression_term(p):
     """
     expression : term 
@@ -259,7 +263,7 @@ def p_string(p):
     '''
     p[0] = add_node({"type":"STRING", "label":f"STR_{p[1]}", "value":p[1]})
 
-#-------------------------- Term Times ------------------------------------------
+#---------- Term Times ------------------------------------------
 def p_term_times(p):
     '''
     term : term TIMES exponent
@@ -270,7 +274,7 @@ def p_term_times(p):
 
     p[0] = node
 
-#-------------------------- Term Divide ------------------------------------------
+#---------- Term Divide ------------------------------------------
 def p_term_divide(p):
     '''
     term : term DIVIDE exponent
@@ -287,7 +291,7 @@ def p_term_exponent(p):
     '''
     p[0] = p[1]
 
-#-------------------------- Exponent Exponent ---------------------------
+#---------- Exponent Exponent ---------------------------
 def p_exponent_exp(p):
     '''
     exponent : factor EXP factor
@@ -298,14 +302,14 @@ def p_exponent_exp(p):
 
     p[0] = node
 
-#-------------------------- Exponent Factor -----------------------------
+#---------- Exponent Factor -----------------------------
 def p_exponent_factor(p):
     '''
     exponent : factor
     '''
     p[0] = p[1]
 
-#-------------------------- Parentheses ---------------------------------
+#---------- Parentheses ---------------------------------
 def p_exponent_parent(p):
     '''
     exponent : LPAREN expression RPAREN
@@ -314,7 +318,7 @@ def p_exponent_parent(p):
     parseGraph.add_edge(node["counter"], p[2]["counter"])
     p[0] = node
 
-#-------------------------- Factor --------------------------------------
+#---------- Factor --------------------------------------
 def p_factor_num(p):
     ''' 
     factor : NUMBER
@@ -322,7 +326,7 @@ def p_factor_num(p):
     p[0] = add_node({"type":"NUMBER", "label":f"NUM_{p[1]}", "value":p[1]})
 
 
-#-------------------------- Variable assignment -------------------------
+#---------- Variable assignment -------------------------
 def p_factor_id(p):
     ''' 
     factor : VARIABLE
@@ -330,7 +334,7 @@ def p_factor_id(p):
     p[0] = add_node({"type":"VARIABLE", "label":f"VAR_{p[1]}", "value":p[1]})
     
 
-#-------------------------- Function call ------------------------------
+#---------- Function call ------------------------------
 def p_factor_function_call(p):
     '''
     factor : function_call
@@ -365,7 +369,7 @@ def p_params(p):
     else:
         p[0] = [p[1]]
 
-#-------------------------- parse tree ---------------------------------
+#---------- parse tree ---------------------------------
 def execute_parse_tree(tree):
     root = tree.nodes[0]
     root_id = 0
@@ -373,7 +377,7 @@ def execute_parse_tree(tree):
     if(type(res)== int or type(res) == float):
         print(f"Result: {res}")
 
-# #-------------------------- Visit node function -------------------------
+# ---------- Visit node function -------------------------
 
 def visit_node(tree, node_id, from_id):
     children = tree.neighbors(node_id)
@@ -459,18 +463,18 @@ def visit_node(tree, node_id, from_id):
             else:
                 print("Error function", v, "not found")
                 return "Error"
-#-------------------------- Error handling ------------------------------
+#---------- Error handling ------------------------------
 def p_error(p):
     print("Syntax error on input ", p)
 
 
-#-------------------------- Building the parser ------------------------
+#---------- Building the parser ------------------------
 
 parser = yacc.yacc()
 
-#-------------------------- Reading the file ----------------------------
+# ---------- Reading the file --------------------------
 
-#-------- IMPORTANT NOTICE: TO TEST A FILE IMPORT SET THE VARIABLE fileImport TO TRUE--------
+# IMPORTANT NOTICE: TO TEST A FILE IMPORT SET THE VARIABLE fileImport TO TRUE
 
 # The text file is a file with a list of commands, each command is separated by a new line
 if fileImport: # If the file import variable is set to True
@@ -520,12 +524,3 @@ while True:
 
 
 print("Finished, accepted input.")
-
-
-# Aceptar archivos y ejecutar el contenido -> 15 pts -> LISTO
-# Tareas -> 15 pts -> LISTO
-# Aceptar cualquier función de numpy Al menos 9 de ellas. -> 10 pts -> LISTO
-# Implementación de visualización de histogramas con opencv -> 10 pts -> LISTO
-# Implementación de CannyEdge-> 25 pts -> LISTO
-# Pruebas -> 25 pts -> 
-# Aceptar None como valor de la gramática para inicialización de variables -> 5 pts -> 
