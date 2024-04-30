@@ -288,7 +288,7 @@ De esta manera aseguramos que el archivo de pruebas sea cargado correctamente al
 ```Python
 fileImport = False
 ```
-
+El archivo contiene las siguientes pruebas:
 ```shell
 pemdas = 5 + (3 * 2) / 7 ^ 2 - 1
 a = 1 + 1
