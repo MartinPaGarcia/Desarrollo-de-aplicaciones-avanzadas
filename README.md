@@ -22,7 +22,7 @@
 - [Salomon Dabbah Beracha](https://github.com/SalomonDabs?tab=overview&from=2024-04-01&to=2024-04-29)
 
 # PDF evidencia final
-Aqui se encuentra el documento que incluye todas los rubros especificados en CANVAS para el entregable final, incluye las reglas de la gramática, demostraciones, llamadas a funciones, muestras de la asignación de variables, implementación de flujos de imágenes y aplicación de filtros de Open CV.
+Aquí se encuentra el documento que abarca todos los rubros especificados en CANVAS para el entregable final. Este incluye las reglas gramaticales, demostraciones, llamadas a funciones, ejemplos de asignación de variables, la implementación de flujos de imágenes y la aplicación de filtros de OpenCV.
 
 - [Evidencia Final Compiladores Desarrollo de herramienta de soporte al proceso de análisis de imágenes](/Evidencia%20Final%20Compiladores%20Desarrollo%20de%20herramienta%20de%20soporte%20al%20proceso%20de%20análisis%20de%20imágenes.pdf)
 # Tabla de contenidos
