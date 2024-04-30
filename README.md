@@ -270,7 +270,24 @@ input>> my_mean(a,b,c)
 ```
 
 # Tests
-En esta sección se mostrarán los casos de prueba para nuestro compilador/traductor:
+En esta sección se mostrarán los casos de prueba para nuestro compilador/traductor y cómo habilitarlos dentro de nuestro código:
+
+Cuando usted abre nuestro código en su editor de texto de preferencia, notará lo siguiente:
+
+![img](/img/code.png)
+
+Para habilitar la carga del archivo de las pruebas, será necesario que la línea de código fileImport sea True:
+
+
+```Python
+fileImport = True
+```
+
+De esta manera aseguramos que el archivo de pruebas sea cargado correctamente al entorno. En caso contrario se utilizará False:
+
+```Python
+fileImport = False
+```
 
 ```shell
 pemdas = 5 + (3 * 2) / 7 ^ 2 - 1
