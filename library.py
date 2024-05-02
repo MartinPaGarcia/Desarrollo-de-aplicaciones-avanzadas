@@ -44,6 +44,7 @@ def histogram(img):
     hist_full = cv2.calcHist([img], [0], None, [256], [0, 256])
     plt.plot(hist_full)
     plt.show()
+    return hist_full
 
 def canny_edge(img):
     '''
@@ -60,6 +61,7 @@ def canny_edge(img):
     plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
     
     plt.show()
+    return edges
 
 def my_sum(*args):
     s =  np.array(args)

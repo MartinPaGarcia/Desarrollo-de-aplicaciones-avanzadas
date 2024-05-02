@@ -4,10 +4,13 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from library import *
 
+# ---------- Execution variables --------------------------
+draw = False # Show graph nodes and edges
+fileImport = False # Parse test.txt file
+terminalInputs = False # Run entering commands in terminal
+
 # ---------- Graph variables --------------------------
 parseGraph = None
-draw = True
-fileImport = True
 NODE_COUNTER = 0
 
 #---------- Description -------------------------------
@@ -479,29 +482,73 @@ parser = yacc.yacc()
 
 # IMPORTANT NOTICE: TO TEST A FILE IMPORT SET THE VARIABLE fileImport TO TRUE
 
-# The text file is a file with a list of commands, each command is separated by a new line
-if fileImport: # If the file import variable is set to True
-    with open("test.txt", "r") as f: # Open the file
-        lines = f.readlines() # Read the lines of the file
+def save_graph(executions, symbol_table):
 
-    for line in lines: # Iterate over each command of the file
-        NODE_COUNTER = 0 # Reset the node counter
-        parseGraph = nx.Graph() # Reset the graph
-        root = add_node({"type":"ROOT", "label":"ROOT"}) # Add the root node
-        result = parser.parse(line) # Parse the line
-        parseGraph.add_edge(root["counter"], result["counter"]) # Add the edge between the root and the result
-        labels = nx.get_node_attributes(parseGraph, 'label') # Get the labels of the nodes
-        if (draw): # Draw the graph if it is set to True
-            nx.draw(parseGraph,labels=labels, with_labels=True, font_weight='bold') # Draw the graph
+    file_path = "./graph_result.txt"
+    with open(file_path, "w") as file:
+
+        for execution in executions:
+
+            command = execution['command']
+            graph = execution['graph']
+
+            nodes = graph.nodes(data=True)
+            edges = graph.edges(data=True)
+
+            file.write(f'\n\n--- Command: {command}')
+            for i, node in nodes:
+                file.write(f'\nNode {i}: TYPE={node["type"]}, LABEL={node["label"]}, VALUE={node.get("value")}')
+
+            file.write('\n')
+            for edge in edges:
+                file.write(f'\nEdge: From {edge[0]} to {edge[1]}')
+
+            if len(nodes) >= 2 and nodes[len(nodes) - 2]['type'] == 'ASSIGN':
+                file.write('\n\nOutput:\n')
+                file.write(f'{nodes[len(nodes) - 1]["value"]} = {symbol_table[nodes[len(nodes) - 1]["value"]]}')
+
+
+# The text file is a file with a list of commands, each command is separated by a new line
+def parse_file(file_name):
+
+    executions = []
+
+    with open(file_name, "r") as f:
+        lines = f.readlines()
+
+    for line in lines:
+        global parseGraph
+        global NODE_COUNTER
+        NODE_COUNTER = 0
+        parseGraph = nx.Graph()
+        root = add_node({"type":"ROOT", "label":"ROOT"})
+        result = parser.parse(line)
+        parseGraph.add_edge(root["counter"], result["counter"])
+        labels = nx.get_node_attributes(parseGraph, 'label')
+        if (draw):
+            nx.draw(parseGraph,labels=labels, with_labels=True, font_weight='bold')
             plt.show() # Show the plot
 
         execute_parse_tree(parseGraph) # Execute the parse tree
 
-#---------- Testing the lexer -------------------------
+        executions.append({'command': line, 'graph': parseGraph})
 
-while True:
+    return executions, symbol_table
+
+
+if fileImport:
+    executions, symbol_table = parse_file("./test.txt")
+
+    # Save graph in file
+    save_graph(executions, symbol_table)
+
+    
+
+
+#---------- Testing the lexer -------------------------
+while terminalInputs:
     try:
-        data = input("input>> ")
+        data = input("input >> ")
         if(data == "exit"):
             break
         if(data == "symbols"):

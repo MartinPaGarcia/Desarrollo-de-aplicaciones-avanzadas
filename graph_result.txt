@@ -1,0 +1,806 @@
+
+
+--- Command: pemdas = 5 + (3 * 2) / 7 ^ 2 - 1
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=NUMBER, LABEL=NUM_5, VALUE=5
+Node 2: TYPE=NUMBER, LABEL=NUM_3, VALUE=3
+Node 3: TYPE=NUMBER, LABEL=NUM_2, VALUE=2
+Node 4: TYPE=TIMES, LABEL=*, VALUE=
+Node 5: TYPE=GROUP, LABEL={}, VALUE=
+Node 6: TYPE=NUMBER, LABEL=NUM_7, VALUE=7
+Node 7: TYPE=NUMBER, LABEL=NUM_2, VALUE=2
+Node 8: TYPE=POWER, LABEL=POW, VALUE=
+Node 9: TYPE=DIVIDE, LABEL=/, VALUE=
+Node 10: TYPE=PLUS, LABEL=+, VALUE=
+Node 11: TYPE=NUMBER, LABEL=NUM_1, VALUE=1
+Node 12: TYPE=MINUS, LABEL=-, VALUE=
+Node 13: TYPE=ASSIGN, LABEL==, VALUE=
+Node 14: TYPE=VARIABLE_ASSIGN, LABEL=VAR_pemdas, VALUE=pemdas
+
+Edge: From 0 to 13
+Edge: From 1 to 10
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 9
+Edge: From 6 to 8
+Edge: From 7 to 8
+Edge: From 8 to 9
+Edge: From 9 to 10
+Edge: From 10 to 12
+Edge: From 11 to 12
+Edge: From 12 to 13
+Edge: From 13 to 14
+
+Output:
+pemdas = 4.122448979591836
+
+--- Command: a = 1 + 1
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=NUMBER, LABEL=NUM_1, VALUE=1
+Node 2: TYPE=NUMBER, LABEL=NUM_1, VALUE=1
+Node 3: TYPE=PLUS, LABEL=+, VALUE=
+Node 4: TYPE=ASSIGN, LABEL==, VALUE=
+Node 5: TYPE=VARIABLE_ASSIGN, LABEL=VAR_a, VALUE=a
+
+Edge: From 0 to 4
+Edge: From 1 to 3
+Edge: From 2 to 3
+Edge: From 3 to 4
+Edge: From 4 to 5
+
+Output:
+a = 2
+
+--- Command: b = a + 3
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=NUMBER, LABEL=NUM_3, VALUE=3
+Node 3: TYPE=PLUS, LABEL=+, VALUE=
+Node 4: TYPE=ASSIGN, LABEL==, VALUE=
+Node 5: TYPE=VARIABLE_ASSIGN, LABEL=VAR_b, VALUE=b
+
+Edge: From 0 to 4
+Edge: From 1 to 3
+Edge: From 2 to 3
+Edge: From 3 to 4
+Edge: From 4 to 5
+
+Output:
+b = 5
+
+--- Command: c = a + b
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=PLUS, LABEL=+, VALUE=
+Node 4: TYPE=ASSIGN, LABEL==, VALUE=
+Node 5: TYPE=VARIABLE_ASSIGN, LABEL=VAR_c, VALUE=c
+
+Edge: From 0 to 4
+Edge: From 1 to 3
+Edge: From 2 to 3
+Edge: From 3 to 4
+Edge: From 4 to 5
+
+Output:
+c = 7
+
+--- Command: c
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+
+Edge: From 0 to 1
+
+--- Command: res_my_sum = my_sum(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_sum, VALUE=my_sum
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_sum, VALUE=res_my_sum
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_sum = 14
+
+--- Command: res_my_mean = my_mean(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_mean, VALUE=my_mean
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_mean, VALUE=res_my_mean
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_mean = 4.666666666666667
+
+--- Command: res_my_max = my_max(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_max, VALUE=my_max
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_max, VALUE=res_my_max
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_max = 7
+
+--- Command: res_my_min = my_min(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_min, VALUE=my_min
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_min, VALUE=res_my_min
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_min = 2
+
+--- Command: res_my_median = my_median(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_median, VALUE=my_median
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_median, VALUE=res_my_median
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_median = 5.0
+
+--- Command: res_my_std = my_std(a,b,c)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=VARIABLE, LABEL=VAR_b, VALUE=b
+Node 3: TYPE=VARIABLE, LABEL=VAR_c, VALUE=c
+Node 4: TYPE=FUNCTION_CALL, LABEL=FUN_my_std, VALUE=my_std
+Node 5: TYPE=ASSIGN, LABEL==, VALUE=
+Node 6: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_std, VALUE=res_my_std
+
+Edge: From 0 to 5
+Edge: From 1 to 4
+Edge: From 2 to 4
+Edge: From 3 to 4
+Edge: From 4 to 5
+Edge: From 5 to 6
+
+Output:
+res_my_std = 2.0548046676563256
+
+--- Command: res_my_sin = my_sin(a)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_my_sin, VALUE=my_sin
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_sin, VALUE=res_my_sin
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+res_my_sin = [0.90929743]
+
+--- Command: res_my_cos = my_cos(a)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_my_cos, VALUE=my_cos
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_cos, VALUE=res_my_cos
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+res_my_cos = [-0.41614684]
+
+--- Command: res_my_tan = my_tan(a)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_a, VALUE=a
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_my_tan, VALUE=my_tan
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_my_tan, VALUE=res_my_tan
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+res_my_tan = [-2.18503986]
+
+--- Command: search_cv2("imread")
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_imread, VALUE=imread
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_search_cv2, VALUE=search_cv2
+
+Edge: From 0 to 2
+Edge: From 1 to 2
+
+--- Command: res_matrix = gen_matrix(3,3,1,2,3,4,5,6,7,8,9)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=NUMBER, LABEL=NUM_3, VALUE=3
+Node 2: TYPE=NUMBER, LABEL=NUM_3, VALUE=3
+Node 3: TYPE=NUMBER, LABEL=NUM_1, VALUE=1
+Node 4: TYPE=NUMBER, LABEL=NUM_2, VALUE=2
+Node 5: TYPE=NUMBER, LABEL=NUM_3, VALUE=3
+Node 6: TYPE=NUMBER, LABEL=NUM_4, VALUE=4
+Node 7: TYPE=NUMBER, LABEL=NUM_5, VALUE=5
+Node 8: TYPE=NUMBER, LABEL=NUM_6, VALUE=6
+Node 9: TYPE=NUMBER, LABEL=NUM_7, VALUE=7
+Node 10: TYPE=NUMBER, LABEL=NUM_8, VALUE=8
+Node 11: TYPE=NUMBER, LABEL=NUM_9, VALUE=9
+Node 12: TYPE=FUNCTION_CALL, LABEL=FUN_gen_matrix, VALUE=gen_matrix
+Node 13: TYPE=ASSIGN, LABEL==, VALUE=
+Node 14: TYPE=VARIABLE_ASSIGN, LABEL=VAR_res_matrix, VALUE=res_matrix
+
+Edge: From 0 to 13
+Edge: From 1 to 12
+Edge: From 2 to 12
+Edge: From 3 to 12
+Edge: From 4 to 12
+Edge: From 5 to 12
+Edge: From 6 to 12
+Edge: From 7 to 12
+Edge: From 8 to 12
+Edge: From 9 to 12
+Edge: From 10 to 12
+Edge: From 11 to 12
+Edge: From 12 to 13
+Edge: From 13 to 14
+
+Output:
+res_matrix = [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+--- Command: img = load_image("test.jpg")
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_test.jpg, VALUE=test.jpg
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_load_image, VALUE=load_image
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_img, VALUE=img
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+img = [[[252 243 233]
+  [252 243 233]
+  [252 243 233]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ [[253 244 234]
+  [253 244 234]
+  [253 244 234]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ [[254 244 234]
+  [254 244 234]
+  [254 244 234]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ ...
+
+ [[206 214 197]
+  [209 217 200]
+  [209 217 200]
+  ...
+  [102 100  89]
+  [103 101  90]
+  [108 106  95]]
+
+ [[202 212 196]
+  [208 218 201]
+  [208 218 201]
+  ...
+  [116 114  96]
+  [113 111  93]
+  [114 112  94]]
+
+ [[200 211 195]
+  [210 222 204]
+  [210 220 203]
+  ...
+  [126 122 103]
+  [125 121 102]
+  [126 122 103]]]
+
+--- Command: canny = canny_edge("test.jpg")
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_test.jpg, VALUE=test.jpg
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_canny_edge, VALUE=canny_edge
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_canny, VALUE=canny
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+canny = [[0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]]
+
+--- Command: hist = histogram("test.jpg")
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_test.jpg, VALUE=test.jpg
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_histogram, VALUE=histogram
+Node 3: TYPE=ASSIGN, LABEL==, VALUE=
+Node 4: TYPE=VARIABLE_ASSIGN, LABEL=VAR_hist, VALUE=hist
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 3 to 4
+
+Output:
+hist = [[  949.]
+ [19335.]
+ [14108.]
+ [11457.]
+ [ 9311.]
+ [ 5216.]
+ [ 4027.]
+ [ 3537.]
+ [ 3106.]
+ [ 2815.]
+ [ 2611.]
+ [ 2632.]
+ [ 2496.]
+ [ 2380.]
+ [ 2398.]
+ [ 2320.]
+ [ 2344.]
+ [ 2308.]
+ [ 2291.]
+ [ 2209.]
+ [ 2045.]
+ [ 2014.]
+ [ 1957.]
+ [ 1875.]
+ [ 1756.]
+ [ 1686.]
+ [ 1579.]
+ [ 1645.]
+ [ 1625.]
+ [ 1512.]
+ [ 1469.]
+ [ 1467.]
+ [ 1451.]
+ [ 1431.]
+ [ 1350.]
+ [ 1319.]
+ [ 1264.]
+ [ 1234.]
+ [ 1207.]
+ [ 1161.]
+ [ 1215.]
+ [ 1130.]
+ [ 1098.]
+ [ 1108.]
+ [ 1054.]
+ [ 1060.]
+ [ 1039.]
+ [ 1021.]
+ [ 1068.]
+ [  966.]
+ [  976.]
+ [  977.]
+ [ 1067.]
+ [ 1038.]
+ [ 1010.]
+ [  997.]
+ [ 1035.]
+ [  936.]
+ [  947.]
+ [  950.]
+ [  893.]
+ [  936.]
+ [  921.]
+ [  907.]
+ [  907.]
+ [  855.]
+ [  865.]
+ [  865.]
+ [  868.]
+ [  886.]
+ [  835.]
+ [  821.]
+ [  804.]
+ [  787.]
+ [  804.]
+ [  824.]
+ [  769.]
+ [  825.]
+ [  791.]
+ [  781.]
+ [  718.]
+ [  762.]
+ [  799.]
+ [  767.]
+ [  739.]
+ [  730.]
+ [  750.]
+ [  711.]
+ [  744.]
+ [  779.]
+ [  754.]
+ [  702.]
+ [  730.]
+ [  704.]
+ [  669.]
+ [  687.]
+ [  668.]
+ [  745.]
+ [  673.]
+ [  681.]
+ [  708.]
+ [  713.]
+ [  701.]
+ [  661.]
+ [  665.]
+ [  686.]
+ [  720.]
+ [  668.]
+ [  646.]
+ [  633.]
+ [  621.]
+ [  651.]
+ [  582.]
+ [  576.]
+ [  586.]
+ [  621.]
+ [  582.]
+ [  652.]
+ [  617.]
+ [  628.]
+ [  616.]
+ [  645.]
+ [  664.]
+ [  628.]
+ [  603.]
+ [  682.]
+ [  645.]
+ [  682.]
+ [  642.]
+ [  620.]
+ [  605.]
+ [  647.]
+ [  605.]
+ [  622.]
+ [  634.]
+ [  614.]
+ [  591.]
+ [  670.]
+ [  608.]
+ [  597.]
+ [  634.]
+ [  660.]
+ [  573.]
+ [  594.]
+ [  623.]
+ [  572.]
+ [  578.]
+ [  588.]
+ [  600.]
+ [  565.]
+ [  560.]
+ [  552.]
+ [  508.]
+ [  539.]
+ [  531.]
+ [  541.]
+ [  573.]
+ [  563.]
+ [  588.]
+ [  541.]
+ [  524.]
+ [  578.]
+ [  531.]
+ [  535.]
+ [  504.]
+ [  607.]
+ [  605.]
+ [  530.]
+ [  539.]
+ [  573.]
+ [  557.]
+ [  557.]
+ [  553.]
+ [  540.]
+ [  548.]
+ [  527.]
+ [  570.]
+ [  585.]
+ [  628.]
+ [  612.]
+ [  525.]
+ [  612.]
+ [  602.]
+ [  589.]
+ [  566.]
+ [  627.]
+ [  554.]
+ [  623.]
+ [  573.]
+ [  609.]
+ [  629.]
+ [  635.]
+ [  648.]
+ [  603.]
+ [  626.]
+ [  569.]
+ [  657.]
+ [  661.]
+ [  652.]
+ [  711.]
+ [  758.]
+ [  780.]
+ [  858.]
+ [  951.]
+ [  972.]
+ [ 1034.]
+ [  903.]
+ [  917.]
+ [  983.]
+ [  986.]
+ [  971.]
+ [  949.]
+ [  942.]
+ [ 1012.]
+ [ 1020.]
+ [ 1039.]
+ [ 1056.]
+ [ 1120.]
+ [ 1145.]
+ [ 1052.]
+ [ 1145.]
+ [ 1151.]
+ [ 1215.]
+ [ 1275.]
+ [ 1286.]
+ [ 1450.]
+ [ 1447.]
+ [ 1509.]
+ [ 1597.]
+ [ 1765.]
+ [ 1793.]
+ [ 2087.]
+ [ 2164.]
+ [ 2377.]
+ [ 2478.]
+ [ 2858.]
+ [ 3261.]
+ [ 3230.]
+ [ 4177.]
+ [ 4465.]
+ [ 4421.]
+ [ 3862.]
+ [ 3927.]
+ [ 2888.]
+ [ 2214.]
+ [ 2387.]
+ [ 1848.]
+ [ 2651.]
+ [ 1087.]
+ [  549.]
+ [  480.]
+ [  457.]
+ [  412.]
+ [  408.]
+ [  403.]
+ [   65.]]
+
+--- Command: show_image(img)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_img, VALUE=img
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_show_image, VALUE=show_image
+
+Edge: From 0 to 2
+Edge: From 1 to 2
+
+--- Command: show_image(gray_scale("test.jpg"))
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_test.jpg, VALUE=test.jpg
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_gray_scale, VALUE=gray_scale
+Node 3: TYPE=FUNCTION_CALL, LABEL=FUN_show_image, VALUE=show_image
+
+Edge: From 0 to 3
+Edge: From 1 to 2
+Edge: From 2 to 3
+
+--- Command: save_image("test2.jpg",img)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=STRING, LABEL=STR_test2.jpg, VALUE=test2.jpg
+Node 2: TYPE=VARIABLE, LABEL=VAR_img, VALUE=img
+Node 3: TYPE=FUNCTION_CALL, LABEL=FUN_save_image, VALUE=save_image
+
+Edge: From 0 to 3
+Edge: From 1 to 3
+Edge: From 2 to 3
+
+--- Command: size = gen_vector(4,5)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=NUMBER, LABEL=NUM_4, VALUE=4
+Node 2: TYPE=NUMBER, LABEL=NUM_5, VALUE=5
+Node 3: TYPE=FUNCTION_CALL, LABEL=FUN_gen_vector, VALUE=gen_vector
+Node 4: TYPE=ASSIGN, LABEL==, VALUE=
+Node 5: TYPE=VARIABLE_ASSIGN, LABEL=VAR_size, VALUE=size
+
+Edge: From 0 to 4
+Edge: From 1 to 3
+Edge: From 2 to 3
+Edge: From 3 to 4
+Edge: From 4 to 5
+
+Output:
+size = [4 5]
+
+--- Command: img2 = img -> blur(size)-> blur(size)-> blur(size)  
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_size, VALUE=size
+Node 2: TYPE=FLOW_FUNCTION_CALL, LABEL=ff_blur, VALUE=blur
+Node 3: TYPE=VARIABLE, LABEL=VAR_img, VALUE=img
+Node 4: TYPE=VARIABLE, LABEL=VAR_size, VALUE=size
+Node 5: TYPE=FLOW_FUNCTION_CALL, LABEL=ff_blur, VALUE=blur
+Node 6: TYPE=PENDING_NODE, LABEL=PENDING, VALUE=
+Node 7: TYPE=VARIABLE, LABEL=VAR_size, VALUE=size
+Node 8: TYPE=FLOW_FUNCTION_CALL, LABEL=ff_blur, VALUE=blur
+Node 9: TYPE=PENDING_NODE, LABEL=PENDING, VALUE=
+Node 10: TYPE=ASSIGN, LABEL==, VALUE=
+Node 11: TYPE=VARIABLE_ASSIGN, LABEL=VAR_img2, VALUE=img2
+
+Edge: From 0 to 10
+Edge: From 1 to 2
+Edge: From 2 to 3
+Edge: From 2 to 6
+Edge: From 4 to 5
+Edge: From 5 to 6
+Edge: From 5 to 9
+Edge: From 7 to 8
+Edge: From 8 to 9
+Edge: From 8 to 10
+Edge: From 10 to 11
+
+Output:
+img2 = [[[253 244 234]
+  [253 244 234]
+  [253 244 234]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ [[253 244 234]
+  [253 244 234]
+  [253 244 234]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ [[254 244 234]
+  [254 244 234]
+  [254 244 234]
+  ...
+  [  1   2   0]
+  [  1   2   0]
+  [  1   2   0]]
+
+ ...
+
+ [[210 216 199]
+  [210 216 199]
+  [209 215 198]
+  ...
+  [116 117 110]
+  [113 113 106]
+  [111 111 104]]
+
+ [[209 216 199]
+  [209 216 199]
+  [208 215 198]
+  ...
+  [117 117 108]
+  [113 113 103]
+  [111 111 101]]
+
+ [[208 216 199]
+  [208 216 199]
+  [207 215 198]
+  ...
+  [117 117 107]
+  [114 113 102]
+  [112 111 100]]]
+
+--- Command: show_image(img2)
+
+Node 0: TYPE=ROOT, LABEL=ROOT, VALUE=None
+Node 1: TYPE=VARIABLE, LABEL=VAR_img2, VALUE=img2
+Node 2: TYPE=FUNCTION_CALL, LABEL=FUN_show_image, VALUE=show_image
+
+Edge: From 0 to 2
+Edge: From 1 to 2

@@ -1,0 +1,12 @@
+a = 10.5
+b = 34.25
+c = 46.23
+sum_res = my_sum(a,b,c)
+mean_res = my_mean(a,b,c)
+max_res = my_max(a,b,c)
+min_res = my_min(a,b,c)
+median_res = my_median(a,b,c)
+std_res = my_std(a,b,c)
+sin_res = my_sin(a)
+cos_res = my_cos(a)
+tan_res = my_tan(a)
