@@ -69,6 +69,13 @@ def test_cv2():
 
     # Save image should create file with the corresponging image at "./test_save.jpg"
     saved_image = cv2.imread('test_save.jpg')
+
+    # Calling an invalid function should return error
+    res_invalid_func = 'Error'
+
+    # Test flows
+    size = np.array([4, 5])
+    res_blur_img = cv2.blur(cv2.blur(img, size), size)
     
     assert np.array_equal(res_gen_matrix, symbols['res_gen_matrix']) # Gen matrix
     assert np.array_equal(res_gen_vector, symbols['res_gen_vector']) # Gen vector
@@ -77,5 +84,5 @@ def test_cv2():
     assert np.array_equal(res_canny, symbols['res_canny']) # Canny
     assert np.array_equal(res_hist, symbols['res_hist']) # Histogram
     assert isinstance(saved_image, np.ndarray) and saved_image.shape == (432, 768, 3) # Save image
-
-test_cv2()
+    assert res_invalid_func == symbols['res_invalid_func'] # Call invalid function
+    assert np.array_equal(res_blur_img, symbols['res_blur_img']) # Flow: img -> blur(size)-> blur(size)
