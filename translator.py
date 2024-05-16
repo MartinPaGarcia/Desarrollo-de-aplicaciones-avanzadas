@@ -9,7 +9,7 @@ draw = False # Show graph nodes and edges
 terminalInputs = False # Run entering commands in terminal
 
 # ---------- File import variables ------------------------
-fileImport = False # Parse test.txt file
+fileImport = True # Parse test.txt file
 
 # ---------- Graph variables --------------------------
 parseGraph = None
